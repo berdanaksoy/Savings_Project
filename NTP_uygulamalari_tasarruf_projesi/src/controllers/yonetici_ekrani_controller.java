@@ -21,6 +21,8 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import com.projeMySql.util.VeritabaniUtil;
@@ -306,6 +308,20 @@ public class yonetici_ekrani_controller {
 
     @FXML
     void initialize() {
+        Rectangle clip = new Rectangle();
+        clip.widthProperty().bind(anchor_kimlik_on.widthProperty());
+        clip.heightProperty().bind(anchor_kimlik_on.heightProperty());
+        anchor_kimlik_on.setClip(clip);
+
+        Rectangle clip2 = new Rectangle();
+        clip.widthProperty().bind(anchor_kimlik_arka.widthProperty());
+        clip.heightProperty().bind(anchor_kimlik_arka.heightProperty());
+        anchor_kimlik_arka.setClip(clip2);
+        
+        image_zoom(img_kimlik_on, slider_kimlik_on);
+        image_zoom(img_kimlik_arka, slider_kimlik_arka);
+        
+    	
     	page_operations.upload_images_2button(btn_kapat, btn_geri_don);
     	
     	yonetici_kayitlar=yonetici_giris_controller.yonetici_kayitlar.get(0);
